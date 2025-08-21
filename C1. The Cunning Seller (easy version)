@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define mod 1000000007
+void solve()
+{
+    int n;
+    cin >> n;
+
+    int ans = 0;
+    
+    while (n > 0) 
+    {
+        int x = 0;
+        int val = 1;
+        
+        while (val * 3 <= n)
+        {
+            x++;
+            val = val * 3;
+        }
+        
+        int price;
+        if (x == 0) 
+        {
+            price = 3;
+        } 
+        else 
+        {
+            price = val * 3 + x * (val / 3);
+        }
+        
+        int temp1 = n / val;
+        ans += price * temp1;
+        n = n % val;
+    }
+    
+    cout << ans << endl;
+}
+
+signed main() {
+    ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+// #ifndef ONLINE_JUDGE
+//     freopen("input.txt", "r", stdin);
+//     freopen("output.txt", "w", stdout);
+// #endif
+
+    int test;
+    cin>>test;
+    while(test--)
+    {
+        solve();
+    }
+    return 0;
+}
